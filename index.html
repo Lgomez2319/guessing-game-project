@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guessing Game Project</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nosifer&family=Varela+Round&display=swap');
+@import url('https://fonts.cdnfonts.com/css/djb-ransom-note-messy');
+
+body {
+  text-align: center;
+  background-image: url('https://i.etsystatic.com/32777778/r/il/4a5e1e/3469331310/il_570xN.3469331310_g7tx.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+main {
+  width: 95%;
+  margin: auto;
+}
+
+h1 {
+  background-color: purple;
+  color: #55F300;
+  border-radius: 1rem;
+  font-family: "Varela Round", sans-serif;
+  font-size: 5vw;
+  font-style: italic;
+}
+
+h2 {
+  background-color: black;
+  color: #9C42D3;
+  width: 50vw;
+  margin: auto;
+  font-family: 'DJB Ransom Note Messy', sans-serif;
+  font-family: 'DJB Ransom Note', sans-serif;
+  font-size: 2rem;
+}
+
+/* form > input {
+  width: 1rem;
+} */
+
+input.letter-input {
+  width: calc(25% / 5);
+  text-align: center;
+  font-size: 4vw;
+  background-color: #55F300;
+  border: 3px solid;
+  box-shadow:5px 5px 5px 1px rgba(0, 0, 0, 0.5);
+  margin: .5vw;
+}
+
+table {
+  margin: 2rem auto;
+}
+
+th, td {
+  background-color: #38472F;
+  color: white;
+  border: 2px dashed #6EFF16;
+  vertical-align: top;
+  padding: 1rem;
+  width: 11.5vw;
+}
+    </style>
+</head>
+<body>
+    <main>
+<h1>Guess the Password!</h1>
+  <h2>What does a liar do when he's dead? <br>-Yours truly, the Riddler</h2>
+
+  <form id="password-form"></form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Wrong Letter</th>
+      <th>Wrong Letter</th>
+      <th>Wrong Letter</th>
+      <th>Wrong Letter</th>
+      <th>Wrong Letter</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>X: <br> a <br> t</td>
+      <td>X:</td>
+      <td>X:</td>
+      <td>X:</td>
+      <td>X:</td>
+    </tr>
+  </tbody>
+</table>
+  
+</main>
+    <script>
+        const passwordForm = document.querySelector("#password-form");
+
+// initilize game variables
+let phrase = "he lies still";
+let index = 0;
+
+for (let char of phrase) {
+  console.log(char);
+  console.log(index);
+  const letterInput = document.createElement('input');
+  letterInput.type="text";
+  letterInput.classList.add("letter-input");
+  letterInput.maxLength = "1";
+  letterInput.id = index.toString();
+  passwordForm.appendChild(letterInput);
+  index++;
+}
+
+passwordForm.addEventListener("change", function(event) {
+  const thisInput = event.target;
+  const guess = thisInput.value;
+  console.log(thisInput);
+  console.log(guess);
+  
+  if (guess === phrase[thisInput.id]) {
+    console.log("You guessed right!")
+  } else {
+    console.log("HAHA NOPE!")
+  }
+  
+})
+    </script>
+</body>
+</html>
